@@ -85,27 +85,50 @@
 	          </code></pre>
 						<small>Am besten mit <a href="https://www.npmjs.com/package/nodemon" target="_blank">Nodemon</a> arbeiten!</small>
 					</section>
-						<section>
-							<h2>Ein Projekt intialisieren</h2>
-							<pre><code class="bash" data-trim data-noescape>
-								npm init
-		          </code></pre>
-							<pre><code class="js" data-trim data-noescape>
-								{
-								  "name": "hft-vl-11-example-1",
-								  "version": "1.0.0",
-								  "description": "",
-								  "main": <mark>"index.js"</mark>,
-								  "scripts": {
-										<mark>"start": "node index.js"</mark>,
-								    "test": "echo \"Error: no test specified\" && exit 1"
-								  },
-								  "author": "",
-								  "license": "ISC"
-								}
-		          </code></pre>
-							<small>Am besten mit <a href="https://www.npmjs.com/package/nodemon" target="_blank">Nodemon</a> arbeiten!</small>
-						</section>
+					<section>
+						<h3>Imports / Exports</h3>
+						<pre><code class="js" data-trim>
+							// imports.js
+							const sum = require('./exports.js');
+
+							sum(1, 2);
+						</code></pre>
+						<pre><code class="js" data-trim>
+							// exports.js
+							function sum(a, b) {
+								return a + b;
+							}
+
+							function notExported() {
+								console.log('bazinga')
+							}
+
+							module.exports = {
+								sum
+							}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Ein Projekt intialisieren</h2>
+						<pre><code class="bash" data-trim data-noescape>
+							npm init
+	          </code></pre>
+						<pre><code class="js" data-trim data-noescape>
+							{
+							  "name": "hft-vl-11-example-1",
+							  "version": "1.0.0",
+							  "description": "",
+							  "main": <mark>"index.js"</mark>,
+							  "scripts": {
+									<mark>"start": "node index.js"</mark>,
+							    "test": "echo \"Error: no test specified\" && exit 1"
+							  },
+							  "author": "",
+							  "license": "ISC"
+							}
+	          </code></pre>
+						<small>Am besten mit <a href="https://www.npmjs.com/package/nodemon" target="_blank">Nodemon</a> arbeiten!</small>
+					</section>
 				</section>
 
 				<section>
@@ -241,14 +264,383 @@
 
 				<section>
 					<section>
-						<h2>Node.js als mit WebSockets</h2>
+						<h2>Node.js als WebSocket Server</h2>
+					</section>
+					<section>
+						<h3>WebSockets 👍</h3>
+						<ul>
+							<li>Baut auf dem HTTP Protokoll auf</li>
+							<li>Viele Libraries und Beispiele online</li>
+							<li>Kein Overhead (vgl. HTTP Header)</li>
+							<li>Die meisten Implementierungen haben einen Fallback auf alte Technologien</li>
+						</ul>
+					</section>
+					<section>
+						<h3>WebSockets 👎</h3>
+						<ul>
+							<li>Sicherheit muss selbst überprüft werden</li>
+							<li>Wirwarr welche Library verwendet werden soll</li>
+							<li>Noch nicht fertig: W3C Working Draft 22 December 2009</li>
+						</ul>
+					</section>
+					<section>
+						<h2>WebSocket library auswählen</h2>
+						<ul>
+							<li><a href="https://github.com/learnboost/socket.io">socket.io</a></li>
+							<li><a href="https://github.com/einaros/ws">ws (anscheinend die schnellste)</a></li>
+							<li><a href="https://github.com/Worlize/WebSocket-Node"</a>WebSocket-Node</li>
+							<li><a href="https://github.com/sockjs/sockjs-client">sockjs</a></li>
+							<li><a href="http://faye.jcoglan.com/node.html">faye</a></li>
+							<li><a href="https://deepstream.io/">deepstream.io</a></li>
+							<li>uvm.</li>
+						</ul>
+					</section>
+					<section>
+						<pre><code class="bash" data-trim data-noescape>
+							npm init
+							npm install socket.io express
+						</code></pre>
+					</section>
+					<section>
+						<h3>Client HTML</h3>
+						<pre><code class="html" data-trim data-noescape>
+							&lt;body class="container"&gt;
+							  &lt;div&gt;
+							    &lt;h1&gt;Websockets!&lt;/h1&gt;
+							  &lt;/div&gt;
+							  &lt;div&gt;
+							    &lt;ul id="messages"&gt;&lt;/ul&gt;
+							    &lt;form action="" id="myForm"&gt;
+							      &lt;input id="m" autocomplete="off" /&gt;&lt;button&gt;Send&lt;/button&gt;
+							    &lt;/form&gt;
+							  &lt;/div&gt;
+							&lt;/body&gt;
+						</code></pre>
+					</section>
+					<section>
+						<h3>Client JS Code</h3>
+						<pre><code class="js" data-trim>
+							$(document).ready(() => {
+								const socket = io();
+								$('#myForm').submit((event) => {
+									event.preventDefault();
+
+									socket.emit('message', $('#m').val());
+									$('#m').val('');
+									return false;
+								});
+
+								socket.on('message', function(msg){
+									$('#messages').append($('&lt;li&gt;').text(msg));
+								});
+							});
+						</code></pre>
+					</section>
+					<section>
+						<h3>Server Code</h3>
+						<pre><code class="js" data-trim>
+							const app = require('express')();
+							const http = require('http').Server(app);
+							const io = require('socket.io')(http);
+
+							const port = process.env.PORT || 3000;
+
+							app.get('/', function(req, res){
+							  res.sendFile(__dirname + '/public/index.html');
+							});
+
+							io.on('connection', function(socket){
+							  console.log('a user connected');
+							  socket.on('disconnect', function(){
+							    console.log('user disconnected');
+							  });
+
+							  socket.on('message', function(msg){
+							    console.log('message: ' + msg);
+							    io.emit('message', msg);
+							  });
+							});
+
+							http.listen(port, function(){
+							  console.log('listening on *:3000');
+							});
+						</code></pre>
+					</section>
+					<section>
+						<h3>Socket.IO Rooms</h3>
+						<pre><code class="bash" data-trim>
+     Server                                Client
++-----------------+                   +-----------------+
+|  Generate Room  | +-------------->  |                 |
+|  Inform Client  | +-------------->  |                 |
+|  Join Client    | +-------------->  |                 |
+|                 |                   |                 |
+|  Receive Msg    | <--------------+  |  Send Msgs      |
+|  Broadcast Msg  | +-------------->  |  Receive Msg    |
+|                 |                   |                 |
++-----------------+                   +-----------------+
+						</code></pre>
+					</section>
+					<section>
+						<h3>IDs für die Räume vergeben</h3>
+						<pre><code class="bash" data-trim data-noescape>
+							npm install shortid
+						</code></pre>
+					</section>
+					<section>
+						<h3>Client HTML</h3>
+						<pre><code class="html" data-trim data-noescape>
+							&lt;body class="container"&gt;
+							  &lt;div&gt;
+							    &lt;ul id="messages"&gt;&lt;/ul&gt;
+							    &lt;form action="" id="messageForm"&gt;
+							      &lt;h2&gt;Messages&lt;/h2&gt;
+							      &lt;div id="room"&gt;&lt;/div&gt;
+							      &lt;input id="m" autocomplete="off" /&gt;&lt;button&gt;Send&lt;/button&gt;
+							    &lt;/form&gt;
+							    &lt;form action="" id="roomForm"&gt;
+							      &lt;h2&gt;Join another room: &lt;/h2&gt;
+							      &lt;input id="r" autocomplete="off" /&gt;&lt;button&gt;Join Room&lt;/button&gt;
+							    &lt;/form&gt;
+							  &lt;/div&gt;
+							&lt;/body&gt;
+						</code></pre>
+					</section>
+					<section>
+						<h3>Rooms Client</h3>
+						<pre><code class="js" data-trim>
+							$(document).ready(() =&gt; {
+							  const socket = io();
+							  $('#messageForm').submit((event) =&gt; {
+							    event.preventDefault();
+
+							    socket.emit('message', $('#m').val());
+							    $('#m').val('');
+							  });
+
+							  $('#roomForm').submit((event) =&gt; {
+							    event.preventDefault();
+
+							    socket.emit('room', $('#r').val());
+							    $('#room').html($('&lt;h3&gt;').text(`Room: ${$('#r').val()}`));
+							    $('#r').val('');
+							  });
+
+							  socket.on('message', function(msg){
+							    $('#messages').append($('&lt;li&gt;').text(msg));
+							  });
+
+							  socket.on('room', function(msg){
+							    $('#room').html($('&lt;h3&gt;').text(`Room: ${msg}`));
+							    $('#messages').empty();
+							  });
+							});
+						</code></pre>
+					</section>
+					<section>
+						<h3>Rooms Server</h3>
+						<pre><code class="js" data-trim>
+							const app = require('express')();
+							const http = require('http').Server(app);
+							const io = require('socket.io')(http);
+							const shortid = require('shortid');
+							const port = process.env.PORT || 3000;
+
+							app.get('/', function(req, res){
+							  res.sendFile(__dirname + '/public/index.html');
+							});
+
+							io.on('connection', function(socket){
+							  let room = shortid.generate();
+							  socket.emit('room', room);
+							  socket.join(room);
+							  console.log('a user connected');
+							  socket.on('disconnect', function(){
+							    console.log('user disconnected');
+							  });
+
+							  socket.on('message', function(msg){
+							    console.log(`Message: ${msg} in Room: ${room}`);
+							    io.sockets.in(room).emit('message', msg);
+							  });
+
+							  socket.on('room', function(r){
+							    console.log('user joined room ' + r);
+							    socket.join(r);
+							    room = r;
+							  });
+							});
+
+							http.listen(port, function(){
+							  console.log('listening on *:3000');
+							});
+
+						</code></pre>
 					</section>
 				</section>
+			</section>
 
 				<section>
 					<section>
 						<h2>Node.js als REST Api für Angular / React usw.</h2>
 					</section>
+					<section>
+						<h3>Typisches Layout REST & CRUD</h3>
+						<small>
+						<table>
+							<thead>
+								<tr>
+									<td>Action</td>
+									<td>URL Pfad</td>
+									<td>Parameter</td>
+									<td>Daten</td>
+									<td>Request Methode</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Neuer Hero</td>
+									<td>/api/heroes</td>
+									<td></td>
+									<td>{name: Batman}</td>
+									<td>POST</td>
+								</tr>
+								<tr>
+									<td>Liste an Heroes</td>
+									<td>/api/heroes</td>
+									<td></td>
+									<td></td>
+									<td>GET</td>
+								</tr>
+								<tr>
+									<td>Einzelnen Hero auslesen</td>
+									<td>/api/heroes/42</td>
+									<td>Hero ID</td>
+									<td></td>
+									<td>GET</td>
+								</tr>
+								<tr>
+									<td>Hero verändern</td>
+									<td>/api/heroes/42</td>
+									<td>Hero ID</td>
+									<td>{name: NewName}</td>
+									<td>PUT</td>
+								</tr>
+								<tr>
+									<td>Hero löschen</td>
+									<td>/api/heroes/42</td>
+									<td>Hero ID</td>
+									<td></td>
+									<td>DELETE</td>
+								</tr>
+							</tbody>
+						</table>
+						</small>
+					</section>
+					<section>
+						<h3>CORS</h3>
+						<small>Cross-origin resource sharing (CORS) erlaubt es AJAX Requests die Same-origin Policy zu ignorieren und Zugriff auf andere Hosts zuzulassen.</small>
+						<pre><code class="bash" data-trim data-noescape>
+							npm install express cors
+						</code></pre>
+					</section>
+					<section>
+						<h3>Express hat auch einen Router</h3>
+						<pre><code class="js" data-trim>
+							const express = require('express');
+							const cors = require('cors');
+							const routes = require('./routes');
+							const port = process.env.PORT || 3000;
+							const app = express();
+
+							app.use(cors());
+							app.use('/public', express.static(process.cwd() + '/public'));
+							app.use('/api', routes)
+
+
+							app.listen(port, () => {
+							  console.log(`Server listening on port ${port}…`)
+							});
+
+						</code></pre>
+					</section>
+					<section>
+						<h3>routes.js</h3>
+						<pre><code class="js" data-trim>
+
+							const express = require('express');
+							const router = express.Router();
+
+							let heroes = [
+							  { id: 11, name: 'Mr. Nice' },
+							  { id: 12, name: 'Narco' },
+							  { id: 13, name: 'Bombasto' },
+							  { id: 14, name: 'Celeritas' },
+							  { id: 15, name: 'Magneta' },
+							  { id: 16, name: 'RubberMan' },
+							  { id: 17, name: 'Dynama' },
+							  { id: 18, name: 'Dr IQ' },
+							  { id: 19, name: 'Magma' },
+							  { id: 20, name: 'Tornado' }
+							];
+
+							router.get('/heroes', (req, res) =>
+							  res.json(heroes)
+							)
+
+							module.exports = router;
+						</code></pre>
+					</section>
+					<section>
+						<h3>Routen mit Parametern</h3>
+						<pre><code class="js" data-trim data-noescape>
+							router.<mark>get</mark>('/heroes/id', (req, res) =>
+							  res.json(heroes.find(hero => hero.id == req.params.id));
+							)
+						</code></pre>
+					</section>
+					<section>
+						<h3>POST Requests</h3>
+						<pre><code class="bash" data-trim data-noescape>
+							npm install body-parser
+						</code></pre>
+						<pre><code class="js" data-trim>
+							// index.js
+							const bodyParser = require('body-parser');
+							app.use(bodyParser.json()); // for parsing application/json
+							app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+						</code></pre>
+					</section>
+					<section>
+						<h3>POST Request Route</h3>
+						<pre><code class="js" data-trim data-noescape>
+							router.<mark>post</mark>('/heroes', (req, res) => {
+							  const newHero = Object.assign(req.body, { id: heroes.length + 1 });
+							  heroes.push(newHero)
+							  res.json(newHero);
+							})
+						</code></pre>
+					</section>
+					<section>
+						<h3>PUT Request Route</h3>
+						<pre><code class="js" data-trim data-noescape>
+							router.<mark>put</mark>('/heroes/:id', (req, res) => {
+							  let heroToChange = heroes.find(hero => hero.id == req.params.id)
+							  heroToChange.name = req.body.name
+							  res.json(heroToChange);
+							})
+						</code></pre>
+					</section>
+					<section>
+						<h3>DELETE Request Route</h3>
+						<pre><code class="js" data-trim data-noescape>
+							router.<mark>delete</mark>('/heroes/:id', (req, res) => {
+								heroes = heroes.filter(hero => hero.id != req.params.id);
+							  res.json(heroes);
+							})
+						</code></pre>
+					</section>
+
 				</section>
 
 				<section>
