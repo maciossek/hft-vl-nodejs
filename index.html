@@ -1,374 +1,369 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>HFT IPR Node.js</title>
+    <title>HFT IPR Node.js</title>
 
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/custom.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/theme/black.css">
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/atom-one-dark.css">
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/atom-one-dark.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-		<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement( 'link' );
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+    <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-	</head>
-	<!-- https://media.giphy.com/media/ZsQVh4CykCXUQ/giphy.gif -->
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section data-background-size="cover" data-background-image="https://media.giphy.com/media/12FHFeQ6BpD6nu/giphy.gif">
-					<h1 class="title">IPR</h1>
-					<h3 class="title">Node.js</h3>
-				</section>
-				<section>
-					<section>
-						<h3>Allgemeines Node.js</h3>
-						<ul>
-							<li>Eine Plattform, die auf der JavaScript-Runtime von Chrome aufbaut, um schnell und einfach skalierbare Netzwerkanwendungen zu erstellen.</li>
-							<li>Verwendet ein ereignisgesteuertes, blockierungsfreies I/O-Modell, das leicht und effizient ist.</li>
-							<li>Perfekt für datenintensive Echtzeitanwendungen, die über verteilte Geräte laufen.</li>
-						</ul>
-					</section>
-					<section>
-						<script type="text/javascript" src="https://ssl.gstatic.com/trends_nrtr/1225_RC05/embed_loader.js"></script>
-						<script type="text/javascript"> trends.embed.renderExploreWidget("TIMESERIES", {"comparisonItem":[{"keyword":"/m/0505cl","geo":"","time":"today 12-m"},{"keyword":"PHP","geo":"","time":"today 12-m"},{"keyword":"/m/0bbxf89","geo":"","time":"today 12-m"},{"keyword":"Python","geo":"","time":"today 12-m"}],"category":5,"property":""}, {"exploreQuery":"cat=5&q=%2Fm%2F0505cl,PHP,%2Fm%2F0bbxf89,Python&date=today 12-m,today 12-m,today 12-m,today 12-m","guestPath":"https://trends.google.com:443/trends/embed/"});
-						</script>
-					</section>
-					<section>
-						<h3>Node.js 👍</h3>
-						<ul>
-							<li>JavaScript!</li>
-							<li>Schnell und einfach zu erlernen</li>
-							<li>Massenhaft Tutorials & Hilfe online</li>
-							<li>Läuft auf allen gängigen Platformen</li>
-							<li>npm – "the largest set of open source libraries in the world."</li>
-						</ul>
-					</section>
-					<section>
-						<h3>Node.js 👎</h3>
-						<ul>
-							<li>JavaScript!</li>
-							<li>Häufig Streitgkeiten (io.js, ayo.js)</li>
-							<li>Tutorials sind meißt eigensinnig / engstirnig (opinionated)</li>
-							<li>Riesige Auswahl an Open Source packages</li>
-						</ul>
-					</section>
-				</section>
+  </head>
+  <!-- https://media.giphy.com/media/ZsQVh4CykCXUQ/giphy.gif -->
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section data-background-size="cover" data-background-image="https://media.giphy.com/media/12FHFeQ6BpD6nu/giphy.gif">
+          <h1 class="title">IPR</h1>
+          <h3 class="title">Node.js</h3>
+        </section>
+        <section>
+          <section>
+            <h3>Allgemeines Node.js</h3>
+            <ul>
+              <li>Eine Plattform, die auf der JavaScript-Runtime von Chrome aufbaut, um schnell und einfach skalierbare Netzwerkanwendungen zu erstellen.</li>
+              <li>Verwendet ein ereignisgesteuertes, blockierungsfreies I/O-Modell, das leicht und effizient ist.</li>
+              <li>Perfekt für datenintensive Echtzeitanwendungen, die über verteilte Geräte laufen.</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Node.js 👍</h3>
+            <ul>
+              <li>JavaScript!</li>
+              <li>Schnell und einfach zu erlernen</li>
+              <li>Massenhaft Tutorials & Hilfe online</li>
+              <li>Läuft auf allen gängigen Platformen</li>
+              <li>npm – "the largest set of open source libraries in the world."</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Node.js 👎</h3>
+            <ul>
+              <li>JavaScript!</li>
+              <li>Häufig Streitgkeiten (io.js, ayo.js)</li>
+              <li>Tutorials sind meißt eigensinnig / engstirnig (opinionated)</li>
+              <li>Riesige Auswahl an Open Source packages</li>
+            </ul>
+          </section>
+        </section>
 
-				<section>
-					<section>
-						<h2>Aufbau einer Anwendung</h2>
-						<pre><code class="bash" data-trim data-noescape>
-							node --version
-							touch index.js
-							node index.js
-	          </code></pre>
-						<pre><code class="js" data-trim data-noescape>
-							const fs = require('fs');
+        <section>
+          <section>
+            <h2>Aufbau einer Anwendung</h2>
+            <pre><code class="bash" data-trim data-noescape>
+              node --version
+              touch index.js
+              node index.js
+            </code></pre>
+            <pre><code class="js" data-trim data-noescape>
+              const fs = require('fs');
 
-							fs.appendFile('mynewfile1.txt', 'Hello content!', function (err) {
-							  if (err) throw err;
-							  console.log('Saved!');
-							});
-	          </code></pre>
-						<small>Am besten mit <a href="https://www.npmjs.com/package/nodemon" target="_blank">Nodemon</a> arbeiten!</small>
-					</section>
-					<section>
-						<h3>Imports / Exports</h3>
-						<pre><code class="js" data-trim>
-							// imports.js
-							const sum = require('./exports.js');
+              fs.appendFile('mynewfile1.txt', 'Hello content!', function (err) {
+                if (err) throw err;
+                console.log('Saved!');
+              });
+            </code></pre>
+            <small>Am besten mit <a href="https://www.npmjs.com/package/nodemon" target="_blank">Nodemon</a> arbeiten!</small>
+          </section>
+          <section>
+            <h3>Imports / Exports</h3>
+            <pre><code class="js" data-trim>
+              // imports.js
+              const sum = require('./exports.js');
 
-							sum(1, 2);
-						</code></pre>
-						<pre><code class="js" data-trim>
-							// exports.js
-							function sum(a, b) {
-								return a + b;
-							}
+              sum(1, 2);
+            </code></pre>
+            <pre><code class="js" data-trim>
+              // exports.js
+              function sum(a, b) {
+                return a + b;
+              }
 
-							function notExported() {
-								console.log('bazinga')
-							}
+              function notExported() {
+                console.log('bazinga')
+              }
 
-							module.exports = {
-								sum
-							}
-						</code></pre>
-					</section>
-					<section>
-						<h2>Ein Projekt intialisieren</h2>
-						<pre><code class="bash" data-trim data-noescape>
-							npm init
-	          </code></pre>
-						<pre><code class="js" data-trim data-noescape>
-							{
-							  "name": "hft-vl-11-example-1",
-							  "version": "1.0.0",
-							  "description": "",
-							  "main": <mark>"index.js"</mark>,
-							  "scripts": {
-									<mark>"start": "node index.js"</mark>,
-							    "test": "echo \"Error: no test specified\" && exit 1"
-							  },
-							  "author": "",
-							  "license": "ISC"
-							}
-	          </code></pre>
-						<small>Am besten mit <a href="https://www.npmjs.com/package/nodemon" target="_blank">Nodemon</a> arbeiten!</small>
-					</section>
-				</section>
+              module.exports = {
+                sum
+              }
+            </code></pre>
+          </section>
+          <section>
+            <h2>Ein Projekt intialisieren</h2>
+            <pre><code class="bash" data-trim data-noescape>
+              npm init
+            </code></pre>
+            <pre><code class="js" data-trim data-noescape>
+            {
+              "name": "hft-vl-11-example-1",
+              "version": "1.0.0",
+              "description": "",
+              "main": <mark>"index.js"</mark>,
+              "scripts": {
+                <mark>"start": "node index.js"</mark>,
+                "test": "echo \"Error: no test specified\" && exit 1"
+              },
+              "author": "",
+              "license": "ISC"
+            }
+            </code></pre>
+            <small>Am besten mit <a href="https://www.npmjs.com/package/nodemon" target="_blank">Nodemon</a> arbeiten!</small>
+          </section>
+        </section>
 
-				<section>
-					<section>
-						<h2>Node.js als WebBackend um HTML zu verschicken</h2>
-					</section>
-					<section>
-						<pre><code class="bash" data-trim data-noescape>
-							npm init
-							npm install ejs
-							npm install express
-						</code></pre>
-						<small>Die package.json wird dann automatisch angepasst!</small>
-					</section>
-					<section>
-						<h2>Ordner Struktur</h2>
-						<pre><code class="bash" data-trim data-noescape>
-							- views
-							----- partials
-							---------- header.ejs
-							----- pages
-							---------- index.ejs
-							---------- about.ejs
-							- package.json
-							- server.js
-						</code></pre>
-					</section>
-					<section>
-						<h2>Routing</h2>
-						<pre><code class="js" data-trim data-noescape>
-							const express = require('express');
+        <section>
+          <section>
+            <h2>Node.js als WebBackend um HTML zu verschicken</h2>
+          </section>
+          <section>
+            <pre><code class="bash" data-trim data-noescape>
+              npm init
+              npm install ejs
+              npm install express
+            </code></pre>
+            <small>Die package.json wird dann automatisch angepasst!</small>
+          </section>
+          <section>
+            <h2>Ordner Struktur</h2>
+            <pre><code class="bash" data-trim data-noescape>
+              - views
+              ----- partials
+              ---------- header.ejs
+              ----- pages
+              ---------- index.ejs
+              ---------- about.ejs
+              - package.json
+              - server.js
+            </code></pre>
+          </section>
+          <section>
+            <h2>Routing</h2>
+            <pre><code class="js" data-trim data-noescape>
+              const express = require('express');
 
-							const port = process.env.PORT || 3000;
-							const app = express();
+              const port = process.env.PORT || 3000;
+              const app = express();
 
-							// GET Requests vgl. PHP $_GET, aber auch eben auch im Browser localhost:3000
-							app.get('/', function (req, res) {
-							  res.send('Hello World!')
-							})
+              // GET Requests vgl. PHP $_GET, aber auch eben auch im Browser localhost:3000
+              app.get('/', function (req, res) {
+                res.send('Hello World!')
+              })
 
-							// POST Requests vgl. PHP $_POST
-							app.post('/', function (req, res) {
-							  res.send('Got a POST request')
-							})
-						</code></pre>
-					</section>
-					<section>
-						<h2>Public / Static: Bilder, CSS, usw.</h2>
-						<pre><code class="js" data-trim data-noescape>
-							app.use('/public', express.static(path.join(__dirname, 'public')))
-						</code></pre>
-					</section>
-					<section>
-						<h2>Template Engine auswählen</h2>
-						<ul>
-							<li><a href="https://mustache.github.io/">Mustache</a></li>
-							<li><a href="http://handlebarsjs.com/">Handlebars</a></li>
-							<li><a href="https://olado.github.io/doT/"</a>doT</li>
-							<li><a href="http://www.dustjs.com/">Dust</a></li>
-							<li><a href="http://underscorejs.org/">Underscore</a></li>
-							<li><a href="https://pugjs.org/">Pug</a></li>
-							<li>uvm.</li>
-						</ul>
-						<pre><code class="js" data-trim data-noescape>
-							app.set('view engine', 'ejs');
-						</code></pre>
-					</section>
-					<section>
-						<h2>Routing mit Templates</h2>
-						<pre><code class="js" data-trim data-noescape>
-							const express = require('express');
+              // POST Requests vgl. PHP $_POST
+              app.post('/', function (req, res) {
+                res.send('Got a POST request')
+              })
+            </code></pre>
+          </section>
+          <section>
+            <h2>Public / Static: Bilder, CSS, usw.</h2>
+            <pre><code class="js" data-trim data-noescape>
+              app.use('/public', express.static(path.join(__dirname, 'public')))
+            </code></pre>
+          </section>
+          <section>
+            <h2>Template Engine auswählen</h2>
+            <ul>
+              <li><a href="https://mustache.github.io/">Mustache</a></li>
+              <li><a href="http://handlebarsjs.com/">Handlebars</a></li>
+              <li><a href="https://olado.github.io/doT/"</a>doT</li>
+              <li><a href="http://www.dustjs.com/">Dust</a></li>
+              <li><a href="http://underscorejs.org/">Underscore</a></li>
+              <li><a href="https://pugjs.org/">Pug</a></li>
+              <li>uvm.</li>
+            </ul>
+            <pre><code class="js" data-trim data-noescape>
+              app.set('view engine', 'ejs');
+            </code></pre>
+          </section>
+          <section>
+            <h2>Routing mit Templates</h2>
+            <pre><code class="js" data-trim data-noescape>
+              const express = require('express');
 
-							const port = process.env.PORT || 3000;
-							const app = express();
+              const port = process.env.PORT || 3000;
+              const app = express();
 
-							app.get('/', function(req, res) {
-							    res.render('pages/index');
-							});
+              app.get('/', function(req, res) {
+                  res.render('pages/index');
+              });
 
-							app.get('/about', function(req, res) {
-							    res.render('pages/about');
-							});
+              app.get('/about', function(req, res) {
+                  res.render('pages/about');
+              });
 
-							app.listen(port, function() {
-							 console.log(`Server listening on port ${port}…`)
-							});
-						</code></pre>
-					</section>
-					<section>
-						<h2>Daten in die Views übergeben</h2>
-						<pre><code class="js" data-trim data-noescape>
-							app.get('/', function(req, res) {
-							  const pageTitle = 'This is a title';
-							  const anArrayOfData = ['This', 'is', 'something', 'to', 'loop'];
+              app.listen(port, function() {
+               console.log(`Server listening on port ${port}…`)
+              });
+            </code></pre>
+          </section>
+          <section>
+            <h2>Daten in die Views übergeben</h2>
+            <pre><code class="js" data-trim data-noescape>
+              app.get('/', function(req, res) {
+                const pageTitle = 'This is a title';
+                const anArrayOfData = ['This', 'is', 'something', 'to', 'loop'];
 
 
-							  res.render('pages/index', {
-							    title: pageTitle,
-							    data: anArrayOfData
-							  });
-							});
-						</code></pre>
-					</section>
-					<section>
-						<h2>Daten in die Views übergeben</h2>
-						<pre><code class="html" data-trim data-noescape>
-							&lt;!DOCTYPE html&gt;
-							&lt;html lang="en"&gt;
-							&lt;head&gt;
-							    &lt;% include ../partials/head %&gt;
-							&lt;/head&gt;
-							&lt;body class="container"&gt;
-							  &lt;div&gt;
-							    &lt;h1&gt;&lt;%= title %&gt;&lt;/h1&gt;
-							    &lt;p&gt;Welcome to templating using EJS&lt;/p&gt;
-							    &lt;ul&gt;
-							        &lt;% data.forEach(function(d) { %&gt;
-							            &lt;li&gt;&lt;%= d %&gt;&lt;/li&gt;
-							        &lt;% }); %&gt;
-							    &lt;/ul&gt;
-							    &lt;p&gt;Checkout the &lt;a href="/about"&gt;About page!&lt;/a&gt;&lt;/p&gt;
-							  &lt;/div&gt;
+                res.render('pages/index', {
+                  title: pageTitle,
+                  data: anArrayOfData
+                });
+              });
+            </code></pre>
+          </section>
+          <section>
+            <h2>Daten in die Views übergeben</h2>
+            <pre><code class="html" data-trim data-noescape>
+              &lt;!DOCTYPE html&gt;
+              &lt;html lang="en"&gt;
+              &lt;head&gt;
+                  &lt;% include ../partials/head %&gt;
+              &lt;/head&gt;
+              &lt;body class="container"&gt;
+                &lt;div&gt;
+                  &lt;h1&gt;&lt;%= title %&gt;&lt;/h1&gt;
+                  &lt;p&gt;Welcome to templating using EJS&lt;/p&gt;
+                  &lt;ul&gt;
+                      &lt;% data.forEach(function(d) { %&gt;
+                          &lt;li&gt;&lt;%= d %&gt;&lt;/li&gt;
+                      &lt;% }); %&gt;
+                  &lt;/ul&gt;
+                  &lt;p&gt;Checkout the &lt;a href="/about"&gt;About page!&lt;/a&gt;&lt;/p&gt;
+                &lt;/div&gt;
 
-							&lt;footer&gt;
-							    &lt;% include ../partials/footer %&gt;
-							&lt;/footer&gt;
+              &lt;footer&gt;
+                  &lt;% include ../partials/footer %&gt;
+              &lt;/footer&gt;
 
-							&lt;/body&gt;
-							&lt;/html&gt;
-						</code></pre>
-					</section>
-				</section>
+              &lt;/body&gt;
+              &lt;/html&gt;
+            </code></pre>
+          </section>
+        </section>
 
-				<section>
-					<section>
-						<h2>Node.js als WebSocket Server</h2>
-					</section>
-					<section>
-						<h3>WebSockets 👍</h3>
-						<ul>
-							<li>Baut auf dem HTTP Protokoll auf</li>
-							<li>Viele Libraries und Beispiele online</li>
-							<li>Kein Overhead (vgl. HTTP Header)</li>
-							<li>Die meisten Implementierungen haben einen Fallback auf alte Technologien</li>
-						</ul>
-					</section>
-					<section>
-						<h3>WebSockets 👎</h3>
-						<ul>
-							<li>Sicherheit muss selbst überprüft werden</li>
-							<li>Wirwarr welche Library verwendet werden soll</li>
-							<li>Noch nicht fertig: W3C Working Draft 22 December 2009</li>
-						</ul>
-					</section>
-					<section>
-						<h2>WebSocket library auswählen</h2>
-						<ul>
-							<li><a href="https://github.com/learnboost/socket.io">socket.io</a></li>
-							<li><a href="https://github.com/einaros/ws">ws (anscheinend die schnellste)</a></li>
-							<li><a href="https://github.com/Worlize/WebSocket-Node"</a>WebSocket-Node</li>
-							<li><a href="https://github.com/sockjs/sockjs-client">sockjs</a></li>
-							<li><a href="http://faye.jcoglan.com/node.html">faye</a></li>
-							<li><a href="https://deepstream.io/">deepstream.io</a></li>
-							<li>uvm.</li>
-						</ul>
-					</section>
-					<section>
-						<pre><code class="bash" data-trim data-noescape>
-							npm init
-							npm install socket.io express
-						</code></pre>
-					</section>
-					<section>
-						<h3>Client HTML</h3>
-						<pre><code class="html" data-trim data-noescape>
-							&lt;body class="container"&gt;
-							  &lt;div&gt;
-							    &lt;h1&gt;Websockets!&lt;/h1&gt;
-							  &lt;/div&gt;
-							  &lt;div&gt;
-							    &lt;ul id="messages"&gt;&lt;/ul&gt;
-							    &lt;form action="" id="myForm"&gt;
-							      &lt;input id="m" autocomplete="off" /&gt;&lt;button&gt;Send&lt;/button&gt;
-							    &lt;/form&gt;
-							  &lt;/div&gt;
-							&lt;/body&gt;
-						</code></pre>
-					</section>
-					<section>
-						<h3>Client JS Code</h3>
-						<pre><code class="js" data-trim>
-							$(document).ready(() => {
-								const socket = io();
-								$('#myForm').submit((event) => {
-									event.preventDefault();
+        <section>
+          <section>
+            <h2>Node.js als WebSocket Server</h2>
+          </section>
+          <section>
+            <h3>WebSockets 👍</h3>
+            <ul>
+              <li>Baut auf dem HTTP Protokoll auf</li>
+              <li>Viele Libraries und Beispiele online</li>
+              <li>Kein Overhead (vgl. HTTP Header)</li>
+              <li>Die meisten Implementierungen haben einen Fallback auf alte Technologien</li>
+            </ul>
+          </section>
+          <section>
+            <h3>WebSockets 👎</h3>
+            <ul>
+              <li>Sicherheit muss selbst überprüft werden</li>
+              <li>Wirwarr welche Library verwendet werden soll</li>
+              <li>Noch nicht fertig: W3C Working Draft 22 December 2009</li>
+            </ul>
+          </section>
+          <section>
+            <h2>WebSocket library auswählen</h2>
+            <ul>
+              <li><a href="https://github.com/learnboost/socket.io">socket.io</a></li>
+              <li><a href="https://github.com/einaros/ws">ws (anscheinend die schnellste)</a></li>
+              <li><a href="https://github.com/Worlize/WebSocket-Node"</a>WebSocket-Node</li>
+              <li><a href="https://github.com/sockjs/sockjs-client">sockjs</a></li>
+              <li><a href="http://faye.jcoglan.com/node.html">faye</a></li>
+              <li><a href="https://deepstream.io/">deepstream.io</a></li>
+              <li>uvm.</li>
+            </ul>
+          </section>
+          <section>
+            <pre><code class="bash" data-trim data-noescape>
+              npm init
+              npm install socket.io express
+            </code></pre>
+          </section>
+          <section>
+            <h3>Client HTML</h3>
+            <pre><code class="html" data-trim data-noescape>
+              &lt;body class="container"&gt;
+                &lt;div&gt;
+                  &lt;h1&gt;Websockets!&lt;/h1&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                  &lt;ul id="messages"&gt;&lt;/ul&gt;
+                  &lt;form action="" id="myForm"&gt;
+                    &lt;input id="m" autocomplete="off" /&gt;&lt;button&gt;Send&lt;/button&gt;
+                  &lt;/form&gt;
+                &lt;/div&gt;
+              &lt;/body&gt;
+            </code></pre>
+          </section>
+          <section>
+            <h3>Client JS Code</h3>
+            <pre><code class="js" data-trim>
+              $(document).ready(() => {
+                const socket = io();
+                $('#myForm').submit((event) => {
+                  event.preventDefault();
 
-									socket.emit('message', $('#m').val());
-									$('#m').val('');
-									return false;
-								});
+                  socket.emit('message', $('#m').val());
+                  $('#m').val('');
+                  return false;
+                });
 
-								socket.on('message', function(msg){
-									$('#messages').append($('&lt;li&gt;').text(msg));
-								});
-							});
-						</code></pre>
-					</section>
-					<section>
-						<h3>Server Code</h3>
-						<pre><code class="js" data-trim>
-							const app = require('express')();
-							const http = require('http').Server(app);
-							const io = require('socket.io')(http);
+                socket.on('message', function(msg){
+                  $('#messages').append($('&lt;li&gt;').text(msg));
+                });
+              });
+            </code></pre>
+          </section>
+          <section>
+            <h3>Server Code</h3>
+            <pre><code class="js" data-trim>
+              const app = require('express')();
+              const http = require('http').Server(app);
+              const io = require('socket.io')(http);
 
-							const port = process.env.PORT || 3000;
+              const port = process.env.PORT || 3000;
 
-							app.get('/', function(req, res){
-							  res.sendFile(__dirname + '/public/index.html');
-							});
+              app.get('/', function(req, res){
+                res.sendFile(__dirname + '/public/index.html');
+              });
 
-							io.on('connection', function(socket){
-							  console.log('a user connected');
-							  socket.on('disconnect', function(){
-							    console.log('user disconnected');
-							  });
+              io.on('connection', function(socket){
+                console.log('a user connected');
+                socket.on('disconnect', function(){
+                  console.log('user disconnected');
+                });
 
-							  socket.on('message', function(msg){
-							    console.log('message: ' + msg);
-							    io.emit('message', msg);
-							  });
-							});
+                socket.on('message', function(msg){
+                  console.log('message: ' + msg);
+                  io.emit('message', msg);
+                });
+              });
 
-							http.listen(port, function(){
-							  console.log('listening on *:3000');
-							});
-						</code></pre>
-					</section>
-					<section>
-						<h3>Socket.IO Rooms</h3>
-						<pre><code class="bash" data-trim>
+              http.listen(port, function(){
+                console.log('listening on *:3000');
+              });
+            </code></pre>
+          </section>
+          <section>
+            <h3>Socket.IO Rooms</h3>
+            <pre><code class="bash" data-trim>
      Server                                Client
 +-----------------+                   +-----------------+
 |  Generate Room  | +-------------->  |                 |
@@ -379,297 +374,297 @@
 |  Broadcast Msg  | +-------------->  |  Receive Msg    |
 |                 |                   |                 |
 +-----------------+                   +-----------------+
-						</code></pre>
-					</section>
-					<section>
-						<h3>IDs für die Räume vergeben</h3>
-						<pre><code class="bash" data-trim data-noescape>
-							npm install shortid
-						</code></pre>
-					</section>
-					<section>
-						<h3>Client HTML</h3>
-						<pre><code class="html" data-trim data-noescape>
-							&lt;body class="container"&gt;
-							  &lt;div&gt;
-							    &lt;ul id="messages"&gt;&lt;/ul&gt;
-							    &lt;form action="" id="messageForm"&gt;
-							      &lt;h2&gt;Messages&lt;/h2&gt;
-							      &lt;div id="room"&gt;&lt;/div&gt;
-							      &lt;input id="m" autocomplete="off" /&gt;&lt;button&gt;Send&lt;/button&gt;
-							    &lt;/form&gt;
-							    &lt;form action="" id="roomForm"&gt;
-							      &lt;h2&gt;Join another room: &lt;/h2&gt;
-							      &lt;input id="r" autocomplete="off" /&gt;&lt;button&gt;Join Room&lt;/button&gt;
-							    &lt;/form&gt;
-							  &lt;/div&gt;
-							&lt;/body&gt;
-						</code></pre>
-					</section>
-					<section>
-						<h3>Rooms Client</h3>
-						<pre><code class="js" data-trim>
-							$(document).ready(() =&gt; {
-							  const socket = io();
-							  $('#messageForm').submit((event) =&gt; {
-							    event.preventDefault();
+            </code></pre>
+          </section>
+          <section>
+            <h3>IDs für die Räume vergeben</h3>
+            <pre><code class="bash" data-trim data-noescape>
+              npm install shortid
+            </code></pre>
+          </section>
+          <section>
+            <h3>Client HTML</h3>
+            <pre><code class="html" data-trim data-noescape>
+              &lt;body class="container"&gt;
+                &lt;div&gt;
+                  &lt;ul id="messages"&gt;&lt;/ul&gt;
+                  &lt;form action="" id="messageForm"&gt;
+                    &lt;h2&gt;Messages&lt;/h2&gt;
+                    &lt;div id="room"&gt;&lt;/div&gt;
+                    &lt;input id="m" autocomplete="off" /&gt;&lt;button&gt;Send&lt;/button&gt;
+                  &lt;/form&gt;
+                  &lt;form action="" id="roomForm"&gt;
+                    &lt;h2&gt;Join another room: &lt;/h2&gt;
+                    &lt;input id="r" autocomplete="off" /&gt;&lt;button&gt;Join Room&lt;/button&gt;
+                  &lt;/form&gt;
+                &lt;/div&gt;
+              &lt;/body&gt;
+            </code></pre>
+          </section>
+          <section>
+            <h3>Rooms Client</h3>
+            <pre><code class="js" data-trim>
+              $(document).ready(() =&gt; {
+                const socket = io();
+                $('#messageForm').submit((event) =&gt; {
+                  event.preventDefault();
 
-							    socket.emit('message', $('#m').val());
-							    $('#m').val('');
-							  });
+                  socket.emit('message', $('#m').val());
+                  $('#m').val('');
+                });
 
-							  $('#roomForm').submit((event) =&gt; {
-							    event.preventDefault();
+                $('#roomForm').submit((event) =&gt; {
+                  event.preventDefault();
 
-							    socket.emit('room', $('#r').val());
-							    $('#room').html($('&lt;h3&gt;').text(`Room: ${$('#r').val()}`));
-							    $('#r').val('');
-							  });
+                  socket.emit('room', $('#r').val());
+                  $('#room').html($('&lt;h3&gt;').text(`Room: ${$('#r').val()}`));
+                  $('#r').val('');
+                });
 
-							  socket.on('message', function(msg){
-							    $('#messages').append($('&lt;li&gt;').text(msg));
-							  });
+                socket.on('message', function(msg){
+                  $('#messages').append($('&lt;li&gt;').text(msg));
+                });
 
-							  socket.on('room', function(msg){
-							    $('#room').html($('&lt;h3&gt;').text(`Room: ${msg}`));
-							    $('#messages').empty();
-							  });
-							});
-						</code></pre>
-					</section>
-					<section>
-						<h3>Rooms Server</h3>
-						<pre><code class="js" data-trim>
-							const app = require('express')();
-							const http = require('http').Server(app);
-							const io = require('socket.io')(http);
-							const shortid = require('shortid');
-							const port = process.env.PORT || 3000;
+                socket.on('room', function(msg){
+                  $('#room').html($('&lt;h3&gt;').text(`Room: ${msg}`));
+                  $('#messages').empty();
+                });
+              });
+            </code></pre>
+          </section>
+          <section>
+            <h3>Rooms Server</h3>
+            <pre><code class="js" data-trim>
+              const app = require('express')();
+              const http = require('http').Server(app);
+              const io = require('socket.io')(http);
+              const shortid = require('shortid');
+              const port = process.env.PORT || 3000;
 
-							app.get('/', function(req, res){
-							  res.sendFile(__dirname + '/public/index.html');
-							});
+              app.get('/', function(req, res){
+                res.sendFile(__dirname + '/public/index.html');
+              });
 
-							io.on('connection', function(socket){
-							  let room = shortid.generate();
-							  socket.emit('room', room);
-							  socket.join(room);
-							  console.log('a user connected');
-							  socket.on('disconnect', function(){
-							    console.log('user disconnected');
-							  });
+              io.on('connection', function(socket){
+                let room = shortid.generate();
+                socket.emit('room', room);
+                socket.join(room);
+                console.log('a user connected');
+                socket.on('disconnect', function(){
+                  console.log('user disconnected');
+                });
 
-							  socket.on('message', function(msg){
-							    console.log(`Message: ${msg} in Room: ${room}`);
-							    io.sockets.in(room).emit('message', msg);
-							  });
+                socket.on('message', function(msg){
+                  console.log(`Message: ${msg} in Room: ${room}`);
+                  io.sockets.in(room).emit('message', msg);
+                });
 
-							  socket.on('room', function(r){
-							    console.log('user joined room ' + r);
-							    socket.join(r);
-							    room = r;
-							  });
-							});
+                socket.on('room', function(r){
+                  console.log('user joined room ' + r);
+                  socket.join(r);
+                  room = r;
+                });
+              });
 
-							http.listen(port, function(){
-							  console.log('listening on *:3000');
-							});
+              http.listen(port, function(){
+                console.log('listening on *:3000');
+              });
 
-						</code></pre>
-					</section>
-				</section>
-			</section>
+            </code></pre>
+          </section>
+        </section>
+      </section>
 
-				<section>
-					<section>
-						<h2>Node.js als REST Api für Angular / React usw.</h2>
-					</section>
-					<section>
-						<h3>Typisches Layout REST & CRUD</h3>
-						<small>
-						<table>
-							<thead>
-								<tr>
-									<td>Action</td>
-									<td>URL Pfad</td>
-									<td>Parameter</td>
-									<td>Daten</td>
-									<td>Request Methode</td>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>Neuer Hero</td>
-									<td>/api/heroes</td>
-									<td></td>
-									<td>{name: Batman}</td>
-									<td>POST</td>
-								</tr>
-								<tr>
-									<td>Liste an Heroes</td>
-									<td>/api/heroes</td>
-									<td></td>
-									<td></td>
-									<td>GET</td>
-								</tr>
-								<tr>
-									<td>Einzelnen Hero auslesen</td>
-									<td>/api/heroes/42</td>
-									<td>Hero ID</td>
-									<td></td>
-									<td>GET</td>
-								</tr>
-								<tr>
-									<td>Hero verändern</td>
-									<td>/api/heroes/42</td>
-									<td>Hero ID</td>
-									<td>{name: NewName}</td>
-									<td>PUT</td>
-								</tr>
-								<tr>
-									<td>Hero löschen</td>
-									<td>/api/heroes/42</td>
-									<td>Hero ID</td>
-									<td></td>
-									<td>DELETE</td>
-								</tr>
-							</tbody>
-						</table>
-						</small>
-					</section>
-					<section>
-						<h3>CORS</h3>
-						<small>Cross-origin resource sharing (CORS) erlaubt es AJAX Requests die Same-origin Policy zu ignorieren und Zugriff auf andere Hosts zuzulassen.</small>
-						<pre><code class="bash" data-trim data-noescape>
-							npm install express cors
-						</code></pre>
-					</section>
-					<section>
-						<h3>Extra routes.js Datei</h3>
-						<pre><code class="js" data-trim>
-							const express = require('express');
-							const cors = require('cors');
-							const routes = require('./routes');
-							const port = process.env.PORT || 3000;
-							const app = express();
+        <section>
+          <section>
+            <h2>Node.js als REST Api für Angular / React usw.</h2>
+          </section>
+          <section>
+            <h3>Typisches Layout REST & CRUD</h3>
+            <small>
+            <table>
+              <thead>
+                <tr>
+                  <td>Action</td>
+                  <td>URL Pfad</td>
+                  <td>Parameter</td>
+                  <td>Daten</td>
+                  <td>Request Methode</td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Neuer Hero</td>
+                  <td>/api/heroes</td>
+                  <td></td>
+                  <td>{name: Batman}</td>
+                  <td>POST</td>
+                </tr>
+                <tr>
+                  <td>Liste an Heroes</td>
+                  <td>/api/heroes</td>
+                  <td></td>
+                  <td></td>
+                  <td>GET</td>
+                </tr>
+                <tr>
+                  <td>Einzelnen Hero auslesen</td>
+                  <td>/api/heroes/42</td>
+                  <td>Hero ID</td>
+                  <td></td>
+                  <td>GET</td>
+                </tr>
+                <tr>
+                  <td>Hero verändern</td>
+                  <td>/api/heroes/42</td>
+                  <td>Hero ID</td>
+                  <td>{name: NewName}</td>
+                  <td>PUT</td>
+                </tr>
+                <tr>
+                  <td>Hero löschen</td>
+                  <td>/api/heroes/42</td>
+                  <td>Hero ID</td>
+                  <td></td>
+                  <td>DELETE</td>
+                </tr>
+              </tbody>
+            </table>
+            </small>
+          </section>
+          <section>
+            <h3>CORS</h3>
+            <small>Cross-origin resource sharing (CORS) erlaubt es AJAX Requests die Same-origin Policy zu ignorieren und Zugriff auf andere Hosts zuzulassen.</small>
+            <pre><code class="bash" data-trim data-noescape>
+              npm install express cors
+            </code></pre>
+          </section>
+          <section>
+            <h3>Extra routes.js Datei</h3>
+            <pre><code class="js" data-trim>
+              const express = require('express');
+              const cors = require('cors');
+              const routes = require('./routes');
+              const port = process.env.PORT || 3000;
+              const app = express();
 
-							app.use(cors());
-							app.use('/public', express.static(process.cwd() + '/public'));
-							app.use('/api', routes)
+              app.use(cors());
+              app.use('/public', express.static(process.cwd() + '/public'));
+              app.use('/api', routes)
 
 
-							app.listen(port, () => {
-							  console.log(`Server listening on port ${port}…`)
-							});
+              app.listen(port, () => {
+                console.log(`Server listening on port ${port}…`)
+              });
 
-						</code></pre>
-					</section>
-					<section>
-						<h3>routes.js</h3>
-						<pre><code class="js" data-trim>
+            </code></pre>
+          </section>
+          <section>
+            <h3>routes.js</h3>
+            <pre><code class="js" data-trim>
 
-							const express = require('express');
-							const router = express.Router();
+              const express = require('express');
+              const router = express.Router();
 
-							let heroes = [
-							  { id: 11, name: 'Mr. Nice' },
-							  { id: 12, name: 'Narco' },
-							  { id: 13, name: 'Bombasto' },
-							  { id: 14, name: 'Celeritas' },
-							  { id: 15, name: 'Magneta' },
-							  { id: 16, name: 'RubberMan' },
-							  { id: 17, name: 'Dynama' },
-							  { id: 18, name: 'Dr IQ' },
-							  { id: 19, name: 'Magma' },
-							  { id: 20, name: 'Tornado' }
-							];
+              let heroes = [
+                { id: 11, name: 'Mr. Nice' },
+                { id: 12, name: 'Narco' },
+                { id: 13, name: 'Bombasto' },
+                { id: 14, name: 'Celeritas' },
+                { id: 15, name: 'Magneta' },
+                { id: 16, name: 'RubberMan' },
+                { id: 17, name: 'Dynama' },
+                { id: 18, name: 'Dr IQ' },
+                { id: 19, name: 'Magma' },
+                { id: 20, name: 'Tornado' }
+              ];
 
-							router.get('/heroes', (req, res) =>
-							  res.json(heroes)
-							)
+              router.get('/heroes', (req, res) =>
+                res.json(heroes)
+              )
 
-							module.exports = router;
-						</code></pre>
-					</section>
-					<section>
-						<h3>Routen mit Parametern</h3>
-						<pre><code class="js" data-trim data-noescape>
-							router.<mark>get</mark>('/heroes/id', (req, res) =>
-							  res.json(heroes.find(hero => hero.id == req.params.id));
-							)
-						</code></pre>
-					</section>
-					<section>
-						<h3>POST Requests</h3>
-						<pre><code class="bash" data-trim data-noescape>
-							npm install body-parser
-						</code></pre>
-						<pre><code class="js" data-trim>
-							// index.js
-							const bodyParser = require('body-parser');
-							app.use(bodyParser.json()); // for parsing application/json
-							app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
-						</code></pre>
-					</section>
-					<section>
-						<h3>POST Request Route</h3>
-						<pre><code class="js" data-trim data-noescape>
-							router.<mark>post</mark>('/heroes', (req, res) => {
-							  const newHero = Object.assign(req.body, { id: heroes.length + 1 });
-							  heroes.push(newHero)
-							  res.json(newHero);
-							})
-						</code></pre>
-					</section>
-					<section>
-						<h3>PUT Request Route</h3>
-						<pre><code class="js" data-trim data-noescape>
-							router.<mark>put</mark>('/heroes/:id', (req, res) => {
-							  let heroToChange = heroes.find(hero => hero.id == req.params.id)
-							  heroToChange.name = req.body.name
-							  res.json(heroToChange);
-							})
-						</code></pre>
-					</section>
-					<section>
-						<h3>DELETE Request Route</h3>
-						<pre><code class="js" data-trim data-noescape>
-							router.<mark>delete</mark>('/heroes/:id', (req, res) => {
-								heroes = heroes.filter(hero => hero.id != req.params.id);
-							  res.json(heroes);
-							})
-						</code></pre>
-					</section>
+              module.exports = router;
+            </code></pre>
+          </section>
+          <section>
+            <h3>Routen mit Parametern</h3>
+            <pre><code class="js" data-trim data-noescape>
+              router.<mark>get</mark>('/heroes/id', (req, res) =>
+                res.json(heroes.find(hero => hero.id == req.params.id));
+              )
+            </code></pre>
+          </section>
+          <section>
+            <h3>POST Requests</h3>
+            <pre><code class="bash" data-trim data-noescape>
+              npm install body-parser
+            </code></pre>
+            <pre><code class="js" data-trim>
+              // index.js
+              const bodyParser = require('body-parser');
+              app.use(bodyParser.json()); // for parsing application/json
+              app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+            </code></pre>
+          </section>
+          <section>
+            <h3>POST Request Route</h3>
+            <pre><code class="js" data-trim data-noescape>
+              router.<mark>post</mark>('/heroes', (req, res) => {
+                const newHero = Object.assign(req.body, { id: heroes.length + 1 });
+                heroes.push(newHero)
+                res.json(newHero);
+              })
+            </code></pre>
+          </section>
+          <section>
+            <h3>PUT Request Route</h3>
+            <pre><code class="js" data-trim data-noescape>
+              router.<mark>put</mark>('/heroes/:id', (req, res) => {
+                let heroToChange = heroes.find(hero => hero.id == req.params.id)
+                heroToChange.name = req.body.name
+                res.json(heroToChange);
+              })
+            </code></pre>
+          </section>
+          <section>
+            <h3>DELETE Request Route</h3>
+            <pre><code class="js" data-trim data-noescape>
+              router.<mark>delete</mark>('/heroes/:id', (req, res) => {
+                heroes = heroes.filter(hero => hero.id != req.params.id);
+                res.json(heroes);
+              })
+            </code></pre>
+          </section>
 
-				</section>
+        </section>
 
-				<section>
-					<h2>Weitere Links</h2>
-					<ul>
-						<li><a href="http://t3n.de/news/node-js-fork-ayo-streit-open-source-850819/" target="_blank">Node.js Fork Ayo.js T3N</a></li>
-						<li><a href="https://www.w3schools.com/nodejs/nodejs_intro.asp" target="_blank">Node.js Intro</a></li>
-						<li><a href="http://johnny-five.io/" target="_blank">Johnny-Five is the JavaScript Robotics & IoT Platform</a></li>
-						<li><a href="http://expressjs.com/de/starter/installing.html" target="_blank">ExpressJS</a></li>
-						<li><a href="https://scotch.io/tutorials/use-ejs-to-template-your-node-application" target="_blank">EJS Template Engine verwenden</a></li>
-					</ul>
-				</section>
-			</div>
-		</div>
+        <section>
+          <h2>Weitere Links</h2>
+          <ul>
+            <li><a href="http://t3n.de/news/node-js-fork-ayo-streit-open-source-850819/" target="_blank">Node.js Fork Ayo.js T3N</a></li>
+            <li><a href="https://www.w3schools.com/nodejs/nodejs_intro.asp" target="_blank">Node.js Intro</a></li>
+            <li><a href="http://johnny-five.io/" target="_blank">Johnny-Five is the JavaScript Robotics & IoT Platform</a></li>
+            <li><a href="http://expressjs.com/de/starter/installing.html" target="_blank">ExpressJS</a></li>
+            <li><a href="https://scotch.io/tutorials/use-ejs-to-template-your-node-application" target="_blank">EJS Template Engine verwenden</a></li>
+          </ul>
+        </section>
+      </div>
+    </div>
 
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
 
-		<script>
-			Reveal.initialize({
-				backgroundTransition: 'slide',
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
-				]
-			});
-		</script>
-	</body>
+    <script>
+      Reveal.initialize({
+        backgroundTransition: 'slide',
+        dependencies: [
+          { src: 'plugin/markdown/marked.js' },
+          { src: 'plugin/markdown/markdown.js' },
+          { src: 'plugin/notes/notes.js', async: true },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+      });
+    </script>
+  </body>
 </html>
 transition
