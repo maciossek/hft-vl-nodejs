@@ -13,6 +13,11 @@
     <!-- Theme used for syntax highlighting of code -->
     <link rel="stylesheet" href="lib/css/atom-one-dark.css">
 
+		<style>
+			h1.title, h2.title, h3.title {
+				text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5) ! important;
+			}
+		</style>
     <!-- Printing and PDF exports -->
     <script>
       var link = document.createElement( 'link' );
@@ -28,7 +33,7 @@
   <body>
     <div class="reveal">
       <div class="slides">
-        <section data-background-size="cover" data-background-image="https://media.giphy.com/media/12FHFeQ6BpD6nu/giphy.gif">
+        <section data-background-size="cover" data-background-image="https://media.giphy.com/media/ALZ1PPM20REZ2/giphy.gif">
           <h1 class="title">IPR</h1>
           <h3 class="title">Node.js</h3>
         </section>
@@ -84,7 +89,7 @@
             <h3>Imports / Exports</h3>
             <pre><code class="js" data-trim>
               // imports.js
-              const sum = require('./exports.js');
+              const { sum } = require('./exports.js');
 
               sum(1, 2);
             </code></pre>
@@ -253,6 +258,67 @@
 
               &lt;/body&gt;
               &lt;/html&gt;
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Node.js und Datenbanken (SQLite)</h2>
+          </section>
+          <section>
+            <h3>SQLite 👍</h3>
+            <ul>
+              <li>Simple SQL basierte Datenbank ohne Aufwand</li>
+              <li>bietet für den Development Modus genügend Umfang</li>
+              <li>Ähnlich zu MySQL, MariaDB, PostgreSQL, etc.</li>
+              <li>Open Source</li>
+            </ul>
+          </section>
+          <section>
+            <h3>SQlite 👎</h3>
+            <ul>
+              <li>Skaliert schlecht</li>
+              <li>Weniger Möglichkeiten Funktionen</li>
+              <li>Keine hauseigene Software mit GUI als DB Browser</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Datenbank & Tabelle anlegen</h3>
+            <a href="https://sqlitebrowser.org/">https://sqlitebrowser.org/</a>
+          </section>
+          <section>
+            <h3>SQlite installieren</h3>
+            <pre><code class="bash" data-trim>
+              npm install better-sqlite3
+            </code></pre>
+          </section>
+          <section>
+            <h3>Mit der Datenbank verbinden</h3>
+            <pre><code class="bash" data-trim>
+              const Database = require('better-sqlite3');
+              const db = new Database('./db/test.db');
+            </code></pre>
+          </section>
+          <section>
+            <h3>Von der Datenbank lesen</h3>
+            <pre><code class="bash" data-trim>
+              // Alle Datensatze ausgeben mit .all()
+              db.prepare('SELECT * FROM testtable').all();
+              
+              // Nur den ersten Datensatz erhalten
+              db.prepare('SELECT * FROM testtable').get();
+
+              // Den ersten Datensatz erhalten und parameter binden
+              db.prepare('SELECT * FROM testtable WHERE username=?').get('testuser');
+            </code></pre>
+          </section>
+          <section>
+            <h3>In die Datenbank schreiben</h3>
+            <pre><code class="bash" data-trim>
+                var stmt = db.prepare('INSERT INTO testtable(username) VALUES (?);');
+
+                stmt.run('testusername');
             </code></pre>
           </section>
         </section>
@@ -475,7 +541,7 @@
         </section>
       </section>
 
-        <section>
+        <!-- <section>
           <section>
             <h2>Node.js als REST Api für Angular / React usw.</h2>
           </section>
@@ -634,7 +700,7 @@
                 res.json(heroes);
               })
             </code></pre>
-          </section>
+          </section> -->
 
         </section>
 
@@ -646,6 +712,8 @@
             <li><a href="http://johnny-five.io/" target="_blank">Johnny-Five is the JavaScript Robotics & IoT Platform</a></li>
             <li><a href="http://expressjs.com/de/starter/installing.html" target="_blank">ExpressJS</a></li>
             <li><a href="https://scotch.io/tutorials/use-ejs-to-template-your-node-application" target="_blank">EJS Template Engine verwenden</a></li>
+            <li><a href="http://www.sqlitetutorial.net/" target="_blank">SQLite Tutorial</a></li>
+            <li><a href="https://sqlitebrowser.org/" target="_blank">SQLite Browser</a></li>
           </ul>
         </section>
       </div>
