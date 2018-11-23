@@ -230,6 +230,12 @@
                   data: anArrayOfData
                 });
               });
+
+
+
+              const server = app.listen(port, () => {
+                console.log(`Server listening on port ${port}…`)
+              });
             </code></pre>
           </section>
           <section>
@@ -290,35 +296,43 @@
           <section>
             <h3>SQlite installieren</h3>
             <pre><code class="bash" data-trim>
-              npm install better-sqlite3
+              npm install sqlite3
             </code></pre>
           </section>
           <section>
             <h3>Mit der Datenbank verbinden</h3>
             <pre><code class="bash" data-trim>
-              const Database = require('better-sqlite3');
-              const db = new Database('./db/test.db');
+              const sqlite3 = require('sqlite3').verbose();
+              const db = new sqlite3.Database('./db/shoutbox.db');
             </code></pre>
           </section>
           <section>
             <h3>Von der Datenbank lesen</h3>
             <pre><code class="bash" data-trim>
               // Alle Datensatze ausgeben mit .all()
-              db.prepare('SELECT * FROM testtable').all();
-              
-              // Nur den ersten Datensatz erhalten
-              db.prepare('SELECT * FROM testtable').get();
+              db.all('SELECT * FROM shouts', (err, rows) => {
+                // do something e.g.:
+                res.render('pages/index', { shouts: rows })
+              });
 
               // Den ersten Datensatz erhalten und parameter binden
-              db.prepare('SELECT * FROM testtable WHERE username=?').get('testuser');
+              db.run('SELECT * FROM shouts WHERE username=?', ['testuser'], (err) => {
+                // do something
+              });
             </code></pre>
           </section>
           <section>
             <h3>In die Datenbank schreiben</h3>
             <pre><code class="bash" data-trim>
-                var stmt = db.prepare('INSERT INTO testtable(username) VALUES (?);');
-
-                stmt.run('testusername');
+              db.run('INSERT INTO shouts(username, message) VALUES (?, ?);', [req.body.username, req.body.message], (err) => {
+                if(err) {
+                  // Im Errorfall z.B. die gleiche Seite nochmals anzeigen
+                  res.render('pages/add-entry');
+                } else {
+                  // Ansonsten redirect auf die Index Route
+                  res.redirect('/');
+                }
+              });
             </code></pre>
           </section>
         </section>
